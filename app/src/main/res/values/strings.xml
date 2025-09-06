@@ -1,0 +1,22 @@
+<resources>
+    <string name="onetime">Onetime</string>
+    <string name="week">week</string>
+    <string name="month">month</string>
+    <string name="year">year</string>
+    <string name="yearly">Yearly</string>
+    <string name="weekly">Weekly</string>
+    <string name="monthly">Monthly</string>
+    <string name="please_login_google_play_to_continue">Waiting google account connected.</string>
+    <string name="install">Install</string>
+    <string name="free_trial">%d Days Free Trial</string>
+    <string name="auto_renew_cancel_anytime">Cancel anytime</string>
+    <string name="single_product_one_time">%s for Lifetime</string>
+    <string name="single_product_normal">%1$s/%2$s</string>
+    <string name="one_time_name">Lifetime</string>
+    <string name="one_time_description">One time payment</string>
+    <string name="free_trial_description">Then %s/%s, cancel anytime.</string>
+    <string name="no_payment_now_cancel_anytime">No payment now. Cancel anytime.</string>
+
+    <string name="policy_text">- Payment will be charged to Google Account at confirmation of purchase.\n- Subscription automatically renews unless auto-renew is turned off at least 24-hours before the end of current period.\n- Account will be charged for renewal within 24-hours prior to the end of current period after confirmation of purchase.\n- Subscription may be managed by the user and auto-renewal may be turned off by going to the user\'s Account Settings after purchase.\n- Any unused portion of free trial period, if offered, will be forfeited when the user purchases a subscription to that publication, where applicable.</string>
+
+</resources>

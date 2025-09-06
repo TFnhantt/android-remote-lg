@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name" translatable="false">Release - Base Project</string>
+
+    <!-- Ads -->
+    <string name="ads_app_id" translatable="false">ca-app-pub-3940256099942544~3347511713</string>
+
+    <string name="ads_open_ads_id" translatable="false">ca-app-pub-3940256099942544/9257395921</string>
+    <string name="admob_banner_id" translatable="false">ca-app-pub-3940256099942544/2014213617</string>
+    <string name="ads_native_id" translatable="false">ca-app-pub-3940256099942544/2247696110</string>
+    <string name="ads_interstitial_id" translatable="false">ca-app-pub-3940256099942544/1033173712</string>
+    <string name="ads_interstitial_backward_id" translatable="false">ca-app-pub-3940256099942544/1033173712</string>
+
+    <!-- In app -->
+    <string name="billing_sub_week" translatable="false">exonumia.weekly</string>
+    <string name="billing_sub_month" translatable="false"></string>
+    <string name="billing_sub_year" translatable="false">exonumia.yearly</string>
+    <string name="billing_inapp_onetime" translatable="false">exonumia.lifetime</string>
+
+    <string name="privacy_policy_url" translatable="false">https://en.wikipedia.org/wiki/Wiki</string>
+    <string name="term_of_use_url" translatable="false">https://en.wikipedia.org/wiki/Wiki</string>
+</resources>

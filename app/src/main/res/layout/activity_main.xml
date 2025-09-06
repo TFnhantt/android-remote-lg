@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.uni.remote.tech.features.main.MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/mb_interstitial"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Show Interstitial Ad" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/mb_native"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_6"
+            android:text="Load Native Ad" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/mb_banner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_6"
+            android:text="Load Banner Ad" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/mb_premium"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_6"
+            android:text="Upgrade Premium" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/banner_view"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_60"
+        android:layout_marginBottom="@dimen/dimen_12"
+        app:layout_constraintBottom_toTopOf="@id/native_view" />
+
+    <com.uni.remote.tech.admob.nativeAd.view.ViewNativeAd
+        android:id="@+id/native_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:attribute_native_ad_layout="@layout/layout_native_ad_medium" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

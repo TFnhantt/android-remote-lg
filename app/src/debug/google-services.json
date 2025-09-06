@@ -1,0 +1,70 @@
+{
+  "project_info": {
+    "project_number": "806246708832",
+    "project_id": "telestore-5e78f",
+    "storage_bucket": "telestore-5e78f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:806246708832:android:9aa1a09ae4443d09ac7505",
+        "android_client_info": {
+          "package_name": "com.wonbo.exonumia.identifier"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDuc95DkVgMwogeBRGtti7kkHUyToVJDm0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      },
+      "admob_app_id": "ca-app-pub-2898424797519098~8979452451"
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:806246708832:android:edff6a2239e34605ac7505",
+        "android_client_info": {
+          "package_name": "com.remote.remotetcl"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDuc95DkVgMwogeBRGtti7kkHUyToVJDm0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      },
+      "admob_app_id": "ca-app-pub-2898424797519098~5658072978"
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:806246708832:android:72f539e30afcc327ac7505",
+        "android_client_info": {
+          "package_name": "com.remote.vizo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDuc95DkVgMwogeBRGtti7kkHUyToVJDm0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      },
+      "admob_app_id": "ca-app-pub-2898424797519098~8667379696"
+    }
+  ],
+  "configuration_version": "1"
+}
