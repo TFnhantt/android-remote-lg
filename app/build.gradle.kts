@@ -45,6 +45,7 @@ dependencies {
     implementation(project(":module_common"))
     implementation(project(":module_billing"))
     implementation(project(":module_admob"))
+    implementation(project(":Connect-SDK-Android-Lite"))
 
     // Core
     implementation(libs.androidx.core.ktx)

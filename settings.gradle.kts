@@ -1,5 +1,8 @@
 @file:Suppress("UnstableApiUsage")
 
+include(":Connect-SDK-Android-Lite")
+
+
 pluginManagement {
     includeBuild("build-logic")
     repositories {
