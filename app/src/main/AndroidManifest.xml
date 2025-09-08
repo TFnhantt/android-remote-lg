@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <application
-        android:name="com.uni.remote.tech.MainApplication"
+        android:name=".MainApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -13,9 +13,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Tech.Flines"
         tools:targetApi="31">
-
         <activity
-            android:name="com.uni.remote.tech.features.launcher.LauncherActivity"
+            android:name=".features.setting.SettingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".features.finddevice.FindDeviceActivity"
+            android:exported="false" />
+        <activity
+            android:name=".features.launcher.LauncherActivity"
             android:exported="true"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
@@ -26,15 +31,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
-            android:name="com.uni.remote.tech.features.main.MainActivity"
+            android:name=".features.main.MainActivity"
             android:exported="false"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
-
         <activity
-            android:name="com.uni.remote.tech.features.subscription.SubscriptionActivity"
+            android:name=".features.subscription.SubscriptionActivity"
             android:exported="false"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
@@ -42,7 +45,6 @@
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="@string/ads_app_id" />
-
     </application>
 
 </manifest>

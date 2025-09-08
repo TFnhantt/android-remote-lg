@@ -5,6 +5,7 @@ plugins {
     id("com.uni.remote.tech.android.application.firebase")
     id(libs.plugins.kotlin.parcelize.get().pluginId)
     id(libs.plugins.kotlin.serialization.get().pluginId)
+    alias(libs.plugins.kotlin.android)
 }
 
 android {
@@ -86,5 +87,6 @@ dependencies {
     implementation(libs.timber)
     implementation(libs.material)
     implementation(libs.glide)
+    implementation(libs.androidx.activity)
 
 }

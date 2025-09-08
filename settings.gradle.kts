@@ -18,7 +18,7 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Remote LG TV"
+rootProject.name = "Remote Tech - Base Project"
 include(":app")
 include(":module_common")
 include(":module_billing")

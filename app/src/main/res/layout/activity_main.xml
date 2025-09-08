@@ -2,56 +2,353 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.uni.remote.tech.features.main.MainActivity">
+    android:background="@color/bg_primary">
 
     <LinearLayout
+        android:id="@+id/lnlHeader"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:layout_height="?actionBarSize"
+        android:orientation="horizontal"
+        android:padding="@dimen/dimen_16"
         app:layout_constraintTop_toTopOf="parent">
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/mb_interstitial"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Show Interstitial Ad" />
+        <ImageView
+            android:id="@+id/imvPremium"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:scaleType="fitStart"
+            android:src="@drawable/ic_premium"
+            app:tint="@color/white" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/mb_native"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dimen_6"
-            android:text="Load Native Ad" />
+        <TextView
+            android:id="@+id/tvStatusDevice"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="6"
+            android:gravity="center"
+            android:text="@string/no_device"
+            android:textColor="@color/white"
+            android:textSize="@dimen/dimen_18"
+            android:textStyle="bold" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/mb_banner"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dimen_6"
-            android:text="Load Banner Ad" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/mb_premium"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dimen_6"
-            android:text="Upgrade Premium" />
+        <ImageView
+            android:id="@+id/imvSetting"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@drawable/ic_settings"
+            app:tint="@color/white" />
     </LinearLayout>
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cslNav"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_72"
+        android:paddingHorizontal="@dimen/dimen_8"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/lnlHeader">
+
+        <ImageView
+            android:id="@+id/imvPower"
+            android:layout_width="@dimen/dimen_72"
+            android:layout_height="match_parent"
+            android:background="@drawable/bg_btn_circle"
+            android:padding="@dimen/dimen_24"
+            android:src="@drawable/ic_power"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tlNav"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="@dimen/dimen_32"
+            android:background="@drawable/bg_tab"
+            app:layout_constraintEnd_toStartOf="@id/imvKeyBoard"
+            app:layout_constraintStart_toEndOf="@id/imvPower" />
+
+        <ImageView
+            android:id="@+id/imvKeyBoard"
+            android:layout_width="@dimen/dimen_72"
+            android:layout_height="match_parent"
+            android:background="@drawable/bg_btn_circle"
+            android:padding="@dimen/dimen_20"
+            android:src="@drawable/ic_keyboard"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="@dimen/dimen_8"
+        app:layout_constraintBottom_toTopOf="@id/flBannerAds"
+        app:layout_constraintTop_toBottomOf="@id/cslNav">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/vpLayout"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_248"
+                android:layout_marginVertical="@dimen/dimen_24"
+                android:clipToPadding="false"
+                android:paddingHorizontal="@dimen/dimen_12"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/lnlFeature"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_210"
+                android:layout_marginHorizontal="@dimen/dimen_20"
+                android:layout_marginVertical="@dimen/dimen_8"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toTopOf="@id/lnlApp"
+                app:layout_constraintTop_toBottomOf="@id/vpLayout">
+
+                <LinearLayout
+                    android:id="@+id/lnlVol"
+                    android:layout_width="@dimen/dimen_88"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/bg_btn_rectangle"
+                    android:orientation="vertical"
+                    app:layout_constraintStart_toStartOf="parent">
+
+                    <ImageView
+                        android:id="@+id/imvVolUp"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_marginTop="12dp"
+                        android:layout_weight="1"
+                        android:padding="@dimen/dimen_24"
+                        android:src="@drawable/ic_up"
+                        app:tint="@color/white" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dimen_0"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="@string/vol"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/dimen_24"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:id="@+id/imvVolDown"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_marginBottom="@dimen/dimen_12"
+                        android:layout_weight="1"
+                        android:padding="@dimen/dimen_24"
+                        android:src="@drawable/ic_down"
+                        app:tint="@color/white" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lnlAction"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toStartOf="@id/lnlCH"
+                    app:layout_constraintStart_toEndOf="@id/lnlVol"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:id="@+id/imvMenu"
+                        android:layout_width="@dimen/dimen_72"
+                        android:layout_height="@dimen/dimen_72"
+                        android:layout_margin="@dimen/dimen_8"
+                        android:background="@drawable/bg_btn_circle"
+                        android:gravity="center"
+                        android:padding="@dimen/dimen_20"
+                        android:src="@drawable/ic_menu" />
+
+                    <ImageView
+                        android:id="@+id/imvMute"
+                        android:layout_width="@dimen/dimen_72"
+                        android:layout_height="@dimen/dimen_72"
+                        android:layout_margin="@dimen/dimen_8"
+                        android:background="@drawable/bg_btn_circle"
+                        android:gravity="center"
+                        android:padding="@dimen/dimen_20"
+                        android:src="@drawable/ic_mute" />
+
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/imvGuide"
+                    android:layout_width="@dimen/dimen_72"
+                    android:layout_height="@dimen/dimen_72"
+                    android:background="@drawable/bg_btn_circle"
+                    android:gravity="center"
+                    android:padding="@dimen/dimen_20"
+                    android:src="@drawable/ic_guide"
+                    app:layout_constraintEnd_toStartOf="@id/lnlCH"
+                    app:layout_constraintStart_toEndOf="@id/lnlVol"
+                    app:layout_constraintTop_toBottomOf="@id/lnlAction" />
+
+                <LinearLayout
+                    android:id="@+id/lnlCH"
+                    android:layout_width="@dimen/dimen_88"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/bg_btn_rectangle"
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toEndOf="parent">
+
+                    <ImageView
+                        android:id="@+id/imvCHUp"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_marginTop="@dimen/dimen_12"
+                        android:layout_weight="1"
+                        android:padding="@dimen/dimen_24"
+                        android:src="@drawable/ic_up"
+                        app:tint="@color/white" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dimen_0"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="@string/ch"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/dimen_24"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:id="@+id/imvCHDown"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_marginBottom="@dimen/dimen_12"
+                        android:layout_weight="1"
+                        android:padding="@dimen/dimen_24"
+                        android:src="@drawable/ic_down"
+                        app:tint="@color/white" />
+
+                </LinearLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <LinearLayout
+                android:id="@+id/lnlApp"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_50"
+                android:layout_marginBottom="@dimen/dimen_12"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="parent">
+
+                <ImageView
+                    android:id="@+id/imvNetflix"
+                    android:layout_width="@dimen/dimen_0"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:src="@drawable/img_netflix" />
+
+                <ImageView
+                    android:id="@+id/imvPrime"
+                    android:layout_width="@dimen/dimen_0"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:src="@drawable/img_prime" />
+
+                <ImageView
+                    android:id="@+id/imvYtb"
+                    android:layout_width="@dimen/dimen_0"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:src="@drawable/img_ytb" />
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
     <FrameLayout
-        android:id="@+id/banner_view"
+        android:id="@+id/flBannerAds"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dimen_60"
-        android:layout_marginBottom="@dimen/dimen_12"
-        app:layout_constraintBottom_toTopOf="@id/native_view" />
+        app:layout_constraintBottom_toBottomOf="parent" />
 
-    <com.uni.remote.tech.admob.nativeAd.view.ViewNativeAd
-        android:id="@+id/native_view"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cslKeyboardView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:attribute_native_ad_layout="@layout/layout_native_ad_medium" />
+        android:layout_height="match_parent"
+        android:background="#CC000000"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/imvCloseKeyboard"
+            android:layout_width="@dimen/dimen_32"
+            android:layout_height="@dimen/dimen_32"
+            android:layout_margin="@dimen/dimen_24"
+            android:src="@drawable/ic_close"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvGuideKeyBoard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dimen_16"
+            android:text="@string/search_expects_tv_keyboard_to_be_opened_already"
+            android:textColor="@color/text_sec"
+            android:textSize="@dimen/dimen_14"
+            app:layout_constraintTop_toBottomOf="@id/imvCloseKeyboard" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextInputKeyboard"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_0"
+            android:layout_margin="@dimen/dimen_24"
+            android:gravity="top"
+            android:textColor="@color/white"
+            android:textSize="@dimen/dimen_20"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvGuideKeyBoard" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!--    <androidx.constraintlayout.widget.ConstraintLayout-->
+    <!--        android:id="@+id/cslVoiceCommand"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="match_parent"-->
+    <!--        android:background="#66000000"-->
+    <!--        android:visibility="gone">-->
+
+    <!--        <LinearLayout-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:background="@color/whiteContainer"-->
+    <!--            android:orientation="vertical"-->
+    <!--            android:paddingVertical="@dimen/dimen_12"-->
+    <!--            app:layout_constraintBottom_toBottomOf="parent">-->
+
+    <!--            <com.airbnb.lottie.LottieAnimationView-->
+    <!--                android:id="@+id/lottieAnm"-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="@dimen/dimen_140"-->
+    <!--                app:lottie_autoPlay="true"-->
+    <!--                app:lottie_loop="true"-->
+    <!--                app:lottie_rawRes="@raw/anm_splash" />-->
+
+    <!--            <Button-->
+    <!--                android:id="@+id/btnStopVoice"-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="@dimen/dimen_48"-->
+    <!--                android:layout_marginHorizontal="@dimen/dimen_24"-->
+    <!--                android:backgroundTint="@color/tint"-->
+    <!--                android:text="Stop" />-->
+
+    <!--        </LinearLayout>-->
+
+    <!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

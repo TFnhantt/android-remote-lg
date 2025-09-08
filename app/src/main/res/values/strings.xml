@@ -19,4 +19,19 @@
 
     <string name="policy_text">- Payment will be charged to Google Account at confirmation of purchase.\n- Subscription automatically renews unless auto-renew is turned off at least 24-hours before the end of current period.\n- Account will be charged for renewal within 24-hours prior to the end of current period after confirmation of purchase.\n- Subscription may be managed by the user and auto-renewal may be turned off by going to the user\'s Account Settings after purchase.\n- Any unused portion of free trial period, if offered, will be forfeited when the user purchases a subscription to that publication, where applicable.</string>
 
+    <string name="app_name">LGTVRemote</string>
+    <string name="no_device">🔴 No Device ▼</string>
+    <string name="device_name">🟢 %s ▼</string>
+    <string name="connect_to_device">Connect to device</string>
+    <string name="connect_manual">Connect manual +</string>
+    <string name="connect">Connect</string>
+    <string name="devices_scan">Devices scan...</string>
+    <string name="settings">Settings</string>
+    <string name="search_expects_tv_keyboard_to_be_opened_already">Search expects TV keyboard to be opened already.</string>
+    <string name="pairing_with_device">Pairing with device...</string>
+    <string name="vol">VOL</string>
+    <string name="ch">CH</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="setting">Setting</string>
 </resources>

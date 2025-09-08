@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dimen_240"
+    android:orientation="horizontal">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="@dimen/dimen_0"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cvA"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_0"
+            app:cardBackgroundColor="#E13123"
+            app:cardCornerRadius="@dimen/dimen_8"
+            app:cardElevation="@dimen/dimen_2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="A"
+                android:textColor="@color/white"
+                android:textSize="@dimen/dimen_20"
+                android:textStyle="bold" />
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cvB"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_0"
+            android:layout_marginTop="@dimen/dimen_8"
+            app:cardBackgroundColor="#00A558"
+            app:cardCornerRadius="@dimen/dimen_8"
+            app:cardElevation="@dimen/dimen_2"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintTop_toBottomOf="@id/cvA">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="B"
+                android:textColor="@color/white"
+                android:textSize="@dimen/dimen_20"
+                android:textStyle="bold" />
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+        android:layout_width="@dimen/dimen_0"
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="@dimen/dimen_12"
+        android:layout_weight="7"
+        android:orientation="vertical">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_0"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/tvOne"
+                android:layout_width="@dimen/dimen_0"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="@dimen/dimen_12"
+                android:background="@drawable/bg_btn_circle"
+                android:gravity="center"
+                android:text="1"
+                android:textColor="@color/white"
+                android:textSize="@dimen/dimen_24"
+                android:textStyle="bold"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintEnd_toStartOf="@id/tvTwo" />
+
+            <TextView
+                android:id="@+id/tvTwo"
+                android:layout_width="@dimen/dimen_0"
+                android:layout_height="match_parent"
+                android:background="@drawable/bg_btn_circle"
+                android:gravity="center"
+                android:text="2"
+                android:textColor="@color/white"
+                android:textSize="@dimen/dimen_24"
+                android:textStyle="bold"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/tvThree"
+                android:layout_width="@dimen/dimen_0"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/dimen_12"
+                android:background="@drawable/bg_btn_circle"
+                android:gravity="center"
+                android:text="3"
+                android:textColor="@color/white"
+                android:textSize="@dimen/dimen_24"
+                android:textStyle="bold"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintStart_toEndOf="@id/tvTwo" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_0"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/tvFour"
+                android:layout_width="@dimen/dimen_0"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="@dimen/dimen_12"
+                android:background="@drawable/bg_btn_circle"
+                android:gravity="center"
+                android:text="4"
+                android:textColor="@color/white"
+                android:textSize="@dimen/dimen_24"
+                android:textStyle="bold"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintEnd_toStartOf="@id/tvFine" />
+
+            <TextView
+                android:id="@+id/tvFine"
+                android:layout_width="@dimen/dimen_0"
+                android:layout_height="match_parent"
+                android:background="@drawable/bg_btn_circle"
+                android:gravity="center"
+                android:text="5"
+                android:textColor="@color/white"
+                android:textSize="@dimen/dimen_24"
+                android:textStyle="bold"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/tvSix"
+                android:layout_width="@dimen/dimen_0"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/dimen_12"
+                android:background="@drawable/bg_btn_circle"
+                android:gravity="center"
+                android:text="6"
+                android:textColor="@color/white"
+                android:textSize="@dimen/dimen_24"
+                android:textStyle="bold"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintStart_toEndOf="@id/tvFine" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_0"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/tvSeven"
+                android:layout_width="@dimen/dimen_0"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="@dimen/dimen_12"
+                android:background="@drawable/bg_btn_circle"
+                android:gravity="center"
+                android:text="7"
+                android:textColor="@color/white"
+                android:textSize="@dimen/dimen_24"
+                android:textStyle="bold"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintEnd_toStartOf="@id/tvEight" />
+
+            <TextView
+                android:id="@+id/tvEight"
+                android:layout_width="@dimen/dimen_0"
+                android:layout_height="match_parent"
+                android:background="@drawable/bg_btn_circle"
+                android:gravity="center"
+                android:text="8"
+                android:textColor="@color/white"
+                android:textSize="@dimen/dimen_24"
+                android:textStyle="bold"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/tvNine"
+                android:layout_width="@dimen/dimen_0"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/dimen_12"
+                android:background="@drawable/bg_btn_circle"
+                android:gravity="center"
+                android:text="9"
+                android:textColor="@color/white"
+                android:textSize="@dimen/dimen_24"
+                android:textStyle="bold"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintStart_toEndOf="@id/tvEight" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_0"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/tvZero"
+                android:layout_width="@dimen/dimen_0"
+                android:layout_height="match_parent"
+                android:background="@drawable/bg_btn_circle"
+                android:gravity="center"
+                android:text="0"
+                android:textColor="@color/white"
+                android:textSize="@dimen/dimen_24"
+                android:textStyle="bold"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="@dimen/dimen_0"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cvC"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_0"
+            app:cardBackgroundColor="#FFA617"
+            app:cardCornerRadius="@dimen/dimen_8"
+            app:cardElevation="@dimen/dimen_2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="C"
+                android:textColor="@color/white"
+                android:textSize="@dimen/dimen_20"
+                android:textStyle="bold" />
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cvD"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_0"
+            android:layout_marginTop="@dimen/dimen_8"
+            app:cardBackgroundColor="#1775F7"
+            app:cardCornerRadius="@dimen/dimen_8"
+            app:cardElevation="@dimen/dimen_2"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintTop_toBottomOf="@id/cvC">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="D"
+                android:textColor="@color/white"
+                android:textSize="@dimen/dimen_20"
+                android:textStyle="bold" />
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>
