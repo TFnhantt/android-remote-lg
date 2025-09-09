@@ -9,4 +9,5 @@
     <color name="black_50">#80000000</color>
     <color name="white">#FFFFFF</color>
     <color name="bg_primary">#212326</color>
+    <color name="transparent">#00ffffff</color>
 </resources>
