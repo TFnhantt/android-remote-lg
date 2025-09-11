@@ -104,7 +104,7 @@ abstract class BaseActivity<ViewBindingType : ViewBinding, ViewModelType : BaseV
 
     fun loadBannerAd(
         adview: FrameLayout,
-        adId: String = resources.getString(R.string.admob_banner_id)
+        adId: String = resources.getString(R.string.ads_banner_id)
     ) {
         RemoteBilling.admob.bannerAdUtils.loadAdaptiveBanner(
             adViewContainer = adview,

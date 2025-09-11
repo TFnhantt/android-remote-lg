@@ -30,7 +30,7 @@
             android:layout_height="match_parent"
             android:layout_weight="6"
             android:gravity="center"
-            android:text="@string/no_device"
+            android:text="@string/smart"
             android:textColor="@color/white"
             android:textSize="@dimen/dimen_18"
             android:textStyle="bold" />
@@ -68,18 +68,18 @@
             android:layout_marginHorizontal="@dimen/dimen_24"
             android:layout_marginVertical="@dimen/dimen_8"
             android:background="@drawable/bg_tab"
+            app:layout_constraintEnd_toStartOf="@id/imvHome"
+            app:layout_constraintStart_toEndOf="@id/imvPower"
             app:tabIconTint="@color/select_tab"
-            app:tabIndicatorColor="@color/transparent"
-            app:layout_constraintEnd_toStartOf="@id/imvKeyBoard"
-            app:layout_constraintStart_toEndOf="@id/imvPower" />
+            app:tabIndicatorColor="@color/transparent" />
 
         <ImageView
-            android:id="@+id/imvKeyBoard"
+            android:id="@+id/imvHome"
             android:layout_width="@dimen/dimen_72"
             android:layout_height="match_parent"
             android:background="@drawable/bg_btn_circle"
-            android:padding="@dimen/dimen_20"
-            android:src="@drawable/ic_keyboard"
+            android:padding="@dimen/dimen_24"
+            android:src="@drawable/ic_home"
             app:layout_constraintEnd_toEndOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -111,7 +111,6 @@
                 android:layout_marginHorizontal="@dimen/dimen_20"
                 android:layout_marginVertical="@dimen/dimen_8"
                 android:orientation="horizontal"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/vpLayout">
 
                 <LinearLayout
@@ -160,19 +159,20 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:orientation="horizontal"
+                    app:layout_constraintBottom_toTopOf="@id/lnlMedia"
                     app:layout_constraintEnd_toStartOf="@id/lnlCH"
                     app:layout_constraintStart_toEndOf="@id/lnlVol"
                     app:layout_constraintTop_toTopOf="parent">
 
                     <ImageView
-                        android:id="@+id/imvMenu"
+                        android:id="@+id/imvBack"
                         android:layout_width="@dimen/dimen_72"
                         android:layout_height="@dimen/dimen_72"
                         android:layout_margin="@dimen/dimen_8"
                         android:background="@drawable/bg_btn_circle"
                         android:gravity="center"
                         android:padding="@dimen/dimen_20"
-                        android:src="@drawable/ic_menu" />
+                        android:src="@drawable/ic_back" />
 
                     <ImageView
                         android:id="@+id/imvMute"
@@ -183,20 +183,48 @@
                         android:gravity="center"
                         android:padding="@dimen/dimen_20"
                         android:src="@drawable/ic_mute" />
-
                 </LinearLayout>
 
-                <ImageView
-                    android:id="@+id/imvGuide"
-                    android:layout_width="@dimen/dimen_72"
-                    android:layout_height="@dimen/dimen_72"
-                    android:background="@drawable/bg_btn_circle"
-                    android:gravity="center"
-                    android:padding="@dimen/dimen_20"
-                    android:src="@drawable/ic_guide"
+                <LinearLayout
+                    android:id="@+id/lnlMedia"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/dimen_88"
+                    android:background="@drawable/bg_btn_rectangle_hor"
+                    android:orientation="horizontal"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@id/lnlCH"
-                    app:layout_constraintStart_toEndOf="@id/lnlVol"
-                    app:layout_constraintTop_toBottomOf="@id/lnlAction" />
+                    app:layout_constraintStart_toEndOf="@id/lnlVol">
+
+                    <ImageView
+                        android:id="@+id/imvPrevious"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="12dp"
+                        android:layout_weight="1"
+                        android:padding="@dimen/dimen_20"
+                        android:src="@drawable/ic_rev"
+                        app:tint="@color/white" />
+
+                    <ImageView
+                        android:id="@+id/imvPlay"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:padding="@dimen/dimen_20"
+                        android:src="@drawable/ic_play"
+                        app:tint="@color/white" />
+
+                    <ImageView
+                        android:id="@+id/imvNext"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginEnd="12dp"
+                        android:layout_weight="1"
+                        android:padding="@dimen/dimen_20"
+                        android:src="@drawable/ic_fwd"
+                        app:tint="@color/white" />
+
+                </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/lnlCH"
@@ -239,6 +267,17 @@
                 </LinearLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvApp"
+                android:layout_width="match_parent"
+                android:layout_height="140dp"
+                android:layout_marginTop="@dimen/dimen_8"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/lnlFeature"
+                tools:listitem="@layout/app_item" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

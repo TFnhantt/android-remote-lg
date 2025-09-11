@@ -84,45 +84,4 @@
             app:layout_constraintWidth_percent="0.2" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <ImageView
-        android:id="@+id/imvHome"
-        android:layout_width="@dimen/dimen_72"
-        android:layout_height="@dimen/dimen_72"
-        android:background="@drawable/bg_btn_circle"
-        android:padding="@dimen/dimen_26"
-        android:src="@drawable/ic_home"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/imvUndo"
-        android:layout_width="@dimen/dimen_72"
-        android:layout_height="@dimen/dimen_72"
-        android:background="@drawable/bg_btn_circle"
-        android:padding="@dimen/dimen_24"
-        android:src="@drawable/ic_back"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <ImageView
-        android:id="@+id/imvPower"
-        android:layout_width="@dimen/dimen_72"
-        android:layout_height="@dimen/dimen_72"
-        android:background="@drawable/bg_btn_circle"
-        android:padding="@dimen/dimen_24"
-        android:src="@drawable/ic_power"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/imvMenu"
-        android:layout_width="@dimen/dimen_72"
-        android:layout_height="@dimen/dimen_72"
-        android:background="@drawable/bg_btn_circle"
-        android:padding="@dimen/dimen_24"
-        android:src="@drawable/ic_menu"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

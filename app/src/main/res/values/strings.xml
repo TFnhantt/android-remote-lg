@@ -22,16 +22,34 @@
     <string name="app_name">LGTVRemote</string>
     <string name="no_device">🔴 No Device ▼</string>
     <string name="device_name">🟢 %s ▼</string>
+    <string name="smart">🟢 Smart TV ▼</string>
     <string name="connect_to_device">Connect to device</string>
     <string name="connect_manual">Connect manual +</string>
     <string name="connect">Connect</string>
+    <string name="connect_success">Connect success</string>
+    <string name="there_was_an_error">There was an error</string>
     <string name="devices_scan">Devices scan...</string>
     <string name="settings">Settings</string>
     <string name="search_expects_tv_keyboard_to_be_opened_already">Search expects TV keyboard to be opened already.</string>
     <string name="pairing_with_device">Pairing with device...</string>
     <string name="vol">VOL</string>
     <string name="ch">CH</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="enter_pairing_code_on_tv">Enter Pairing Code on TV</string>
+    <string name="pairing_code">Pairing Code</string>
+    <string name="please_enter_pairing_code_on_tv">Please confirm the connection on your TV</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+
     <string name="setting">Setting</string>
+    <string name="upgrade_to_premium">Upgrade to Premium</string>
+    <string name="share">Share</string>
+    <string name="rate_app">Rate App</string>
+    <string name="vibration">Vibration</string>
+    <string name="language">Language</string>
+    <string name="term_of_use">Term of use</string>
+    <string name="privacy_policy">Privacy policy</string>
+    <string name="device_disconnected">Device disconnected</string>
+    <string name="are_you_sure_turn_off_device">Are you sure you want to turn off the device?</string>
+    <string name="power_off">Power Off</string>
 </resources>

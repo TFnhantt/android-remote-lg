@@ -10,52 +10,7 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:src="@drawable/bg_track_pad"
-        app:layout_constraintDimensionRatio="6:5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-
-    <ImageView
-        android:id="@+id/imvHome"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:padding="@dimen/dimen_26"
-        android:src="@drawable/ic_home"
-        app:layout_constraintHeight_percent="0.26"
-        app:layout_constraintStart_toStartOf="@id/imvTrackPad"
-        app:layout_constraintTop_toTopOf="@id/imvTrackPad"
-        app:layout_constraintWidth_percent="0.21" />
-
-    <ImageView
-        android:id="@+id/imvPower"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:padding="@dimen/dimen_24"
-        android:src="@drawable/ic_power"
-        app:layout_constraintEnd_toEndOf="@id/imvTrackPad"
-        app:layout_constraintHeight_percent="0.26"
-        app:layout_constraintTop_toTopOf="@id/imvTrackPad"
-        app:layout_constraintWidth_percent="0.21" />
-
-    <ImageView
-        android:id="@+id/imvUndo"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:padding="@dimen/dimen_24"
-        android:src="@drawable/ic_back"
-        app:layout_constraintBottom_toBottomOf="@id/imvTrackPad"
-        app:layout_constraintHeight_percent="0.26"
-        app:layout_constraintStart_toStartOf="@id/imvTrackPad"
-        app:layout_constraintWidth_percent="0.21" />
-
-    <ImageView
-        android:id="@+id/imvMenu"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:padding="@dimen/dimen_24"
-        android:src="@drawable/ic_menu"
-        app:layout_constraintBottom_toBottomOf="@id/imvTrackPad"
-        app:layout_constraintEnd_toEndOf="@id/imvTrackPad"
-        app:layout_constraintHeight_percent="0.26"
-        app:layout_constraintWidth_percent="0.21" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

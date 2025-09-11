@@ -10,7 +10,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="@dimen/dimen_0"
         android:layout_height="match_parent"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:visibility="invisible">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cvA"
@@ -129,10 +130,10 @@
                 android:textSize="@dimen/dimen_24"
                 android:textStyle="bold"
                 app:layout_constraintDimensionRatio="1:1"
-                app:layout_constraintEnd_toStartOf="@id/tvFine" />
+                app:layout_constraintEnd_toStartOf="@id/tvFive" />
 
             <TextView
-                android:id="@+id/tvFine"
+                android:id="@+id/tvFive"
                 android:layout_width="@dimen/dimen_0"
                 android:layout_height="match_parent"
                 android:background="@drawable/bg_btn_circle"
@@ -157,7 +158,7 @@
                 android:textSize="@dimen/dimen_24"
                 android:textStyle="bold"
                 app:layout_constraintDimensionRatio="1:1"
-                app:layout_constraintStart_toEndOf="@id/tvFine" />
+                app:layout_constraintStart_toEndOf="@id/tvFive" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -235,7 +236,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="@dimen/dimen_0"
         android:layout_height="match_parent"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:visibility="invisible">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cvC"
