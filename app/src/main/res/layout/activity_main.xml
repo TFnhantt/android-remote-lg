@@ -30,7 +30,7 @@
             android:layout_height="match_parent"
             android:layout_weight="6"
             android:gravity="center"
-            android:text="@string/smart"
+            android:text="@string/no_device"
             android:textColor="@color/white"
             android:textSize="@dimen/dimen_18"
             android:textStyle="bold" />

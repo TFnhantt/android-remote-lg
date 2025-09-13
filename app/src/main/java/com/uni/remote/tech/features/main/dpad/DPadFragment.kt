@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import com.uni.remote.tech.base.BaseFragment
 import com.uni.remote.tech.databinding.FragmentDPadBinding
 import com.uni.remote.tech.extensions.safeClickListener
+import com.uni.remote.tech.extensions.setClickAndRepeatListener
 import com.uni.remote.tech.extensions.vibrate
 import com.uni.remote.tech.features.finddevice.FindDeviceActivity
 import com.uni.remote.tech.features.main.MainViewModel
@@ -25,22 +26,22 @@ class DPadFragment : BaseFragment<FragmentDPadBinding, MainViewModel>() {
     }
 
     fun initListener() {
-        binding.imvDown.safeClickListener {
+        binding.imvDown.setClickAndRepeatListener {
             checkConnected {
                 viewModel.lgConnectManager.getKeyControl()?.down(null)
             }
         }
-        binding.imvUP.safeClickListener {
+        binding.imvUP.setClickAndRepeatListener {
             checkConnected {
                 viewModel.lgConnectManager.getKeyControl()?.up(null)
             }
         }
-        binding.imvLeft.safeClickListener {
+        binding.imvLeft.setClickAndRepeatListener {
             checkConnected {
                 viewModel.lgConnectManager.getKeyControl()?.left(null)
             }
         }
-        binding.imvRight.safeClickListener {
+        binding.imvRight.setClickAndRepeatListener {
             checkConnected {
                 viewModel.lgConnectManager.getKeyControl()?.right(null)
             }

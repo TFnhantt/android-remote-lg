@@ -74,15 +74,14 @@ class TrackPadFragment : BaseFragment<FragmentTrackPadBinding, MainViewModel>() 
                 }
             }
             if (isDown && isMoving) {
-                if (dx != 0f && dy != 0f) {
-                    // Scale dx and dy to simulate acceleration
+                if (dx != 0f || dy != 0f) { // allow pure horizontal/vertical
                     val dxSign = if (dx >= 0) 1 else -1
                     val dySign = if (dy >= 0) 1 else -1
-                    dx = dxSign * abs(dx).toDouble().pow(1.1).roundToInt().toFloat()
-                    dy = dySign * abs(dy).toDouble().pow(1.1).roundToInt().toFloat()
+                    dx = dxSign * abs(dx).toDouble().pow(1.2).roundToInt().toFloat()
+                    dy = dySign * abs(dy).toDouble().pow(1.2).roundToInt().toFloat()
+
                     if (!isScroll) {
-                        viewModel.lgConnectManager.getMouseControl()
-                            ?.move(dx.toDouble(), dy.toDouble())
+                        viewModel.lgConnectManager.getMouseControl()?.move(dx.toDouble(), dy.toDouble())
                     } else {
                         val now = SystemClock.uptimeMillis()
                         scrollDx = (motionEvent.x - startX).toInt()
@@ -90,8 +89,10 @@ class TrackPadFragment : BaseFragment<FragmentTrackPadBinding, MainViewModel>() 
                         if (now - eventStart > 1000 && autoScrollTimerTask == null) {
                             autoScrollTimerTask = object : TimerTask() {
                                 override fun run() {
+                                    val curDx = (lastX - startX).toInt()
+                                    val curDy = (lastY - startY).toInt()
                                     viewModel.lgConnectManager.getMouseControl()
-                                        ?.scroll(scrollDx.toDouble(), scrollDy.toDouble())
+                                        ?.scroll(curDx.toDouble(), curDy.toDouble())
                                 }
                             }
                             timer.schedule(autoScrollTimerTask, 100, 750)

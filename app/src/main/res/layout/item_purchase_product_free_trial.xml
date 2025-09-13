@@ -30,7 +30,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto_bold"
                 android:gravity="center_vertical"
-                android:textColor="@color/selector_product_name_color"
+                android:textColor="@color/white"
                 android:textSize="20dp"
                 tools:text="3 Days Free Trial" />
 
@@ -42,7 +42,7 @@
                 android:fontFamily="@font/roboto_medium"
                 android:gravity="center_vertical"
                 android:lines="2"
-                android:textColor="@color/selector_product_description_color"
+                android:textColor="@color/white"
                 android:textSize="14dp"
                 tools:text="then $9.99/month, cancel anytime" />
 

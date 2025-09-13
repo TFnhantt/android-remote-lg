@@ -4,6 +4,8 @@ import android.app.Application
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.hilt.work.HiltWorkerFactory
 import androidx.work.Configuration
+import com.connectsdk.discovery.DiscoveryManager
+import com.connectsdk.service.DIALService
 import dagger.hilt.android.HiltAndroidApp
 import com.uni.remote.tech.admob.admob
 import com.uni.remote.tech.billing.billing
@@ -27,6 +29,9 @@ class MainApplication : Application(), Configuration.Provider {
         configureFrameworks()
 
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        //Service
+        DIALService.registerApp("Levak")
+        DiscoveryManager.init(applicationContext)
     }
 
     override val workManagerConfiguration: Configuration by lazy {

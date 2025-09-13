@@ -3,6 +3,7 @@ package com.uni.remote.tech.features.main
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
@@ -13,6 +14,8 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.connectsdk.core.AppInfo
+import com.connectsdk.device.ConnectableDevice
+import com.connectsdk.service.DeviceService
 import com.connectsdk.service.capability.Launcher
 import com.connectsdk.service.capability.MediaControl
 import com.connectsdk.service.capability.VolumeControl
@@ -25,6 +28,7 @@ import com.uni.remote.tech.common.extension.flow.collectIn
 import com.uni.remote.tech.databinding.ActivityMainBinding
 import com.uni.remote.tech.extensions.gone
 import com.uni.remote.tech.extensions.safeClickListener
+import com.uni.remote.tech.extensions.setClickAndRepeatListener
 import com.uni.remote.tech.extensions.vibrate
 import com.uni.remote.tech.extensions.visible
 import com.uni.remote.tech.features.finddevice.FindDeviceActivity
@@ -35,7 +39,9 @@ import com.uni.remote.tech.features.subscription.SubscriptionActivity
 import com.uni.remote.tech.lgsocket.DeviceState
 import com.uni.remote.tech.utils.AppPref
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import org.json.JSONObject
 
 @AndroidEntryPoint
 class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
@@ -50,20 +56,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
     }
 
     private val findDeviceActResultLauncher =
-        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-            if (result.resultCode == RESULT_OK) {
-                try {
-                    viewModel.lgConnectManager.mTV?.friendlyName?.let {
-                        binding.tvStatusDevice.text = getString(
-                            R.string.device_name,
-                            it
-                        )
-                    }
-                } catch (_: Exception) {
-                    binding.tvStatusDevice.text = getString(R.string.no_device)
-                }
-            }
-        }
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {}
 
     override fun init(savedInstanceState: Bundle?) {
         initView()
@@ -124,11 +117,11 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
             checkConnected { viewModel.lgConnectManager.getKeyControl()?.home(null) }
         }
 
-        binding.imvVolUp.safeClickListener {
+        binding.imvVolUp.setClickAndRepeatListener {
             checkConnected { viewModel.lgConnectManager.getVolumeControl()?.volumeUp(null) }
         }
 
-        binding.imvVolDown.safeClickListener {
+        binding.imvVolDown.setClickAndRepeatListener {
             checkConnected { viewModel.lgConnectManager.getVolumeControl()?.volumeDown(null) }
         }
 
@@ -173,13 +166,13 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
             }
         }
 
-        binding.imvCHUp.safeClickListener {
+        binding.imvCHUp.setClickAndRepeatListener {
             checkConnected {
                 viewModel.lgConnectManager.getTVControl()?.channelUp(null)
             }
         }
 
-        binding.imvCHDown.safeClickListener {
+        binding.imvCHDown.setClickAndRepeatListener {
             checkConnected {
                 viewModel.lgConnectManager.getTVControl()?.channelDown(null)
             }
@@ -236,10 +229,22 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
                                 }
                             }
                         })
+
+                    viewModel.lgConnectManager.mTV?.friendlyName?.let {
+                        binding.tvStatusDevice.text = getString(
+                            R.string.device_name,
+                            it
+                        )
+                    }
                 }
 
                 else -> {}
             }
+        }
+
+        //Open App -> Reconnect
+        if (AppPref.isConnecting) {
+            viewModel.reconnectDevice()
         }
     }
 
@@ -293,11 +298,11 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
                     removeListener()
                     mTV = null
                 }
+                AppPref.disconnectDevice()
                 dialog.dismiss()
             }
             .show()
     }
-
 
     override fun setupViewBinding(inflater: LayoutInflater) = ActivityMainBinding.inflate(inflater)
 }

@@ -1,12 +1,16 @@
 package com.uni.remote.tech.extensions
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
 import android.os.Build
+import android.os.Handler
+import android.os.Looper
 import android.os.VibrationEffect
 import android.os.Vibrator
 import android.os.VibratorManager
+import android.view.MotionEvent
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import androidx.annotation.RequiresPermission
@@ -111,5 +115,47 @@ fun Context.vibrate(durationMillis: Long) {
     } else {
         @Suppress("DEPRECATION")
         vibrator.vibrate(durationMillis)
+    }
+}
+
+@SuppressLint("ClickableViewAccessibility")
+fun View.setClickAndRepeatListener(
+    longPressDelay: Long = 300L, // delay before starting repeat
+    repeatInterval: Long = 80L,  // how often to repeat
+    onClick: () -> Unit
+) {
+    var isPressedDown = false
+    val handler = Handler(Looper.getMainLooper())
+
+    val repeatRunnable = object : Runnable {
+        override fun run() {
+            if (isPressedDown) {
+                onClick()
+                handler.postDelayed(this, repeatInterval)
+            }
+        }
+    }
+
+    setOnTouchListener { _, event ->
+        when (event.action) {
+            MotionEvent.ACTION_DOWN -> {
+                isPressedDown = true
+                // start long press after delay
+                handler.postDelayed(repeatRunnable, longPressDelay)
+                true
+            }
+            MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> {
+                if (isPressedDown) {
+                    handler.removeCallbacks(repeatRunnable)
+                    // if released before long press kicked in → single click
+                    if (event.eventTime - event.downTime < longPressDelay) {
+                        onClick()
+                    }
+                }
+                isPressedDown = false
+                true
+            }
+            else -> false
+        }
     }
 }

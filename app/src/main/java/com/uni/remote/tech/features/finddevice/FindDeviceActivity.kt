@@ -16,6 +16,7 @@ import com.uni.remote.tech.common.extension.flow.collectIn
 import com.uni.remote.tech.databinding.ActivityFindDeviceBinding
 import com.uni.remote.tech.extensions.hideSoftKeyboard
 import com.uni.remote.tech.lgsocket.DeviceState
+import com.uni.remote.tech.utils.AppPref
 import kotlin.getValue
 
 class FindDeviceActivity : BaseActivity<ActivityFindDeviceBinding, FindDeviceViewModel>() {
@@ -85,13 +86,17 @@ class FindDeviceActivity : BaseActivity<ActivityFindDeviceBinding, FindDeviceVie
         viewModel.devices.observe(this) {
             deviceAdapter.submitList(it)
         }
-        viewModel.deviceState.observe(this) {
+        viewModel.lgConnectManager.stateLiveData.observe(this) {
             when (it) {
                 is DeviceState.DeviceReady -> {
                     pairingAlertDialog.dismiss()
                     pairingCodeDialog.dismiss()
                     input?.hideSoftKeyboard()
                     Toast.makeText(this, getString(R.string.connect_success), Toast.LENGTH_SHORT).show()
+                    viewModel.lgConnectManager.isConnected = true
+                    viewModel.lgConnectManager.mTV?.let { connectableDevice ->
+                        AppPref.saveDevice(connectableDevice)
+                    }
                     setResult(RESULT_OK)
                     finish()
                 }
