@@ -2,18 +2,12 @@ package com.uni.remote.tech.features.main.trackpad
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.os.SystemClock
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.ViewGroup
 import com.uni.remote.tech.base.BaseFragment
 import com.uni.remote.tech.databinding.FragmentTrackPadBinding
 import com.uni.remote.tech.features.main.MainViewModel
-import java.util.Timer
-import java.util.TimerTask
-import kotlin.math.abs
-import kotlin.math.pow
-import kotlin.math.roundToInt
 
 
 class TrackPadFragment : BaseFragment<FragmentTrackPadBinding, MainViewModel>() {
@@ -24,13 +18,6 @@ class TrackPadFragment : BaseFragment<FragmentTrackPadBinding, MainViewModel>() 
     private var isScroll = false
     private var startX = 0f
     private var startY = 0f
-    private var lastX = Float.NaN
-    private var lastY = Float.NaN
-    private var scrollDx = 0
-    private var scrollDy: Int = 0
-    private var eventStart: Long = 0
-    private var timer = Timer()
-    private var autoScrollTimerTask: TimerTask? = null
     override fun setupViewBinding(
         inflater: LayoutInflater,
         container: ViewGroup?
@@ -38,83 +25,54 @@ class TrackPadFragment : BaseFragment<FragmentTrackPadBinding, MainViewModel>() 
 
     @SuppressLint("ClickableViewAccessibility")
     override fun init(savedInstanceState: Bundle?) {
-        binding.imvTrackPad.setOnTouchListener { _, motionEvent ->
-            var dx = 0f
-            var dy = 0f
-            val wasMoving: Boolean = isMoving
-            val wasScroll: Boolean = isScroll
-            isScroll = isScroll || motionEvent.pointerCount > 1
-            when (motionEvent.actionMasked) {
+        binding.imvTrackPad.setOnTouchListener { v, event ->
+            when (event.actionMasked) {
                 MotionEvent.ACTION_DOWN -> {
+                    startX = event.x
+                    startY = event.y
                     isDown = true
-                    eventStart = motionEvent.eventTime
-                    startX = motionEvent.x
-                    startY = motionEvent.y
+                    true
                 }
+                MotionEvent.ACTION_MOVE -> {
+                    val dx = event.x - startX
+                    val dy = event.y - startY
 
+                    if (isScroll) {
+                        // Vertical scroll (2-finger OR long vertical drag)
+                        viewModel.lgConnectManager.getMouseControl()?.scroll(0.0,
+                            dy.toDouble()
+                        )
+                    } else {
+                        // Normal relative move
+                        viewModel.lgConnectManager.getMouseControl()?.move(dx.toDouble(), dy.toDouble())
+                    }
+
+                    startX = event.x
+                    startY = event.y
+                    true
+                }
                 MotionEvent.ACTION_UP -> {
+                    if (isDown && !isMoving) {
+                        // Treat as click
+                        viewModel.lgConnectManager.getMouseControl()?.click()
+                    }
                     isDown = false
                     isMoving = false
                     isScroll = false
-                    lastX = Float.NaN
-                    lastY = Float.NaN
+                    true
                 }
-            }
-            if (!lastX.isNaN() || !lastY.isNaN()) {
-                dx = (motionEvent.x - lastX).roundToInt().toFloat()
-                dy = (motionEvent.y - lastY).roundToInt().toFloat()
-            }
-            lastX = motionEvent.x
-            lastY = motionEvent.y
-            val xDistFromStart: Float = abs(motionEvent.x - startX)
-            val yDistFromStart: Float = abs(motionEvent.y - startY)
-            if (isDown && !isMoving) {
-                if (xDistFromStart > 1 && yDistFromStart > 1) {
-                    isMoving = true
-                }
-            }
-            if (isDown && isMoving) {
-                if (dx != 0f || dy != 0f) { // allow pure horizontal/vertical
-                    val dxSign = if (dx >= 0) 1 else -1
-                    val dySign = if (dy >= 0) 1 else -1
-                    dx = dxSign * abs(dx).toDouble().pow(1.2).roundToInt().toFloat()
-                    dy = dySign * abs(dy).toDouble().pow(1.2).roundToInt().toFloat()
-
-                    if (!isScroll) {
-                        viewModel.lgConnectManager.getMouseControl()?.move(dx.toDouble(), dy.toDouble())
-                    } else {
-                        val now = SystemClock.uptimeMillis()
-                        scrollDx = (motionEvent.x - startX).toInt()
-                        scrollDy = (motionEvent.y - startY).toInt()
-                        if (now - eventStart > 1000 && autoScrollTimerTask == null) {
-                            autoScrollTimerTask = object : TimerTask() {
-                                override fun run() {
-                                    val curDx = (lastX - startX).toInt()
-                                    val curDy = (lastY - startY).toInt()
-                                    viewModel.lgConnectManager.getMouseControl()
-                                        ?.scroll(curDx.toDouble(), curDy.toDouble())
-                                }
-                            }
-                            timer.schedule(autoScrollTimerTask, 100, 750)
-                        }
+                MotionEvent.ACTION_POINTER_DOWN -> {
+                    // Detect 2-finger gesture → switch to scroll mode
+                    if (event.pointerCount == 2) {
+                        isScroll = true
                     }
+                    true
                 }
-            } else if (!isDown && !wasMoving) {
-                viewModel.lgConnectManager.getMouseControl()?.click()
-            } else if (!isDown && wasMoving && wasScroll) {
-                dx = motionEvent.x - startX
-                dy = motionEvent.y - startY
-                viewModel.lgConnectManager.getMouseControl()
-                    ?.scroll(dx.toDouble(), dy.toDouble())
+                else -> false
             }
-            if (!isDown) {
-                isMoving = false
-                if (autoScrollTimerTask != null) {
-                    autoScrollTimerTask!!.cancel()
-                    autoScrollTimerTask = null
-                }
-            }
-            true
         }
+
+        binding.imvTrackPad.setClickable(true)
+        binding.imvTrackPad.setFocusable(true)
     }
 }

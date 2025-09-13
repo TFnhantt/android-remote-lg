@@ -14,6 +14,7 @@ import com.uni.remote.tech.admob.admob
 import com.uni.remote.tech.common.RemoteBilling
 import com.uni.remote.tech.extensions.applyInsetsVerticalPadding
 import com.uni.remote.tech.utils.AppConstants
+import com.uni.remote.tech.utils.LoadingDialog
 
 abstract class BaseActivity<ViewBindingType : ViewBinding, ViewModelType : BaseViewModel> :
     AppCompatActivity(),
@@ -25,8 +26,12 @@ abstract class BaseActivity<ViewBindingType : ViewBinding, ViewModelType : BaseV
 
     private var lastTimeLoadNativeAd = 0L
 
+    var loadingDialog: LoadingDialog? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        loadingDialog = LoadingDialog(this)
+
         setContentView(
             initBinding(
                 binding = setupViewBinding(layoutInflater),

@@ -52,4 +52,5 @@
     <string name="device_disconnected">Device disconnected</string>
     <string name="are_you_sure_turn_off_device">Are you sure you want to turn off the device?</string>
     <string name="power_off">Power Off</string>
+    <string name="reconnect_device">Reconnect device</string>
 </resources>

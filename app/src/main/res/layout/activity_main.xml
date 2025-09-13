@@ -84,25 +84,25 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/vpLayout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_300"
+        android:layout_marginVertical="@dimen/dimen_24"
+        android:clipToPadding="false"
+        android:paddingHorizontal="@dimen/dimen_12"
+        app:layout_constraintTop_toBottomOf="@id/cslNav"/>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginBottom="@dimen/dimen_8"
         app:layout_constraintBottom_toTopOf="@id/flBannerAds"
-        app:layout_constraintTop_toBottomOf="@id/cslNav">
+        app:layout_constraintTop_toBottomOf="@id/vpLayout">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
-            <androidx.viewpager2.widget.ViewPager2
-                android:id="@+id/vpLayout"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dimen_300"
-                android:layout_marginVertical="@dimen/dimen_24"
-                android:clipToPadding="false"
-                android:paddingHorizontal="@dimen/dimen_12"
-                app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/lnlFeature"
@@ -111,7 +111,7 @@
                 android:layout_marginHorizontal="@dimen/dimen_20"
                 android:layout_marginVertical="@dimen/dimen_8"
                 android:orientation="horizontal"
-                app:layout_constraintTop_toBottomOf="@id/vpLayout">
+                app:layout_constraintTop_toTopOf="parent">
 
                 <LinearLayout
                     android:id="@+id/lnlVol"

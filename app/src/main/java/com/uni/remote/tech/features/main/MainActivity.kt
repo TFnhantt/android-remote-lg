@@ -3,7 +3,6 @@ package com.uni.remote.tech.features.main
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
@@ -14,8 +13,6 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.connectsdk.core.AppInfo
-import com.connectsdk.device.ConnectableDevice
-import com.connectsdk.service.DeviceService
 import com.connectsdk.service.capability.Launcher
 import com.connectsdk.service.capability.MediaControl
 import com.connectsdk.service.capability.VolumeControl
@@ -39,9 +36,7 @@ import com.uni.remote.tech.features.subscription.SubscriptionActivity
 import com.uni.remote.tech.lgsocket.DeviceState
 import com.uni.remote.tech.utils.AppPref
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import org.json.JSONObject
 
 @AndroidEntryPoint
 class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
@@ -216,6 +211,13 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
                 is DeviceState.DeviceReady -> {
                     lifecycleScope.launch {
                         binding.rvApp.visible()
+                        loadingDialog?.dismiss()
+                        viewModel.lgConnectManager.mTV?.friendlyName?.let {
+                            binding.tvStatusDevice.text = getString(
+                                R.string.device_name,
+                                it
+                            )
+                        }
                     }
 
                     viewModel.lgConnectManager.getLauncher()
@@ -229,13 +231,6 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
                                 }
                             }
                         })
-
-                    viewModel.lgConnectManager.mTV?.friendlyName?.let {
-                        binding.tvStatusDevice.text = getString(
-                            R.string.device_name,
-                            it
-                        )
-                    }
                 }
 
                 else -> {}
@@ -245,6 +240,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
         //Open App -> Reconnect
         if (AppPref.isConnecting) {
             viewModel.reconnectDevice()
+            loadingDialog?.show()
         }
     }
 
@@ -298,6 +294,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
                     removeListener()
                     mTV = null
                 }
+                binding.tvStatusDevice.text = getString(R.string.no_device)
                 AppPref.disconnectDevice()
                 dialog.dismiss()
             }
